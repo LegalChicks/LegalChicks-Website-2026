@@ -14,7 +14,7 @@ export function Footer() {
             Cagayan Valley's premier source for purebred Rhode Island Reds. We raise our flock with zero compromise on quality, genetics, and health.
           </p>
           <div className="flex items-center gap-4">
-            <a href="#" className="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-white hover:bg-gold hover:text-mahogany-900 transition-all duration-300">
+            <a href="https://www.facebook.com/LegalChicksPoultryFarm" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-white hover:bg-gold hover:text-mahogany-900 transition-all duration-300">
               <Facebook className="w-5 h-5" />
             </a>
             <a href="#" className="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-white hover:bg-gold hover:text-mahogany-900 transition-all duration-300">
@@ -47,12 +47,10 @@ export function Footer() {
               <span>Solana, Cagayan Valley, Philippines 3503</span>
             </li>
             <li className="flex items-center gap-3">
-              <Phone className="w-5 h-5 text-gold shrink-0" />
-              <span>+63 936 967 1213</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <Mail className="w-5 h-5 text-gold shrink-0" />
-              <span>hello@legalchicks.com</span>
+              <Facebook className="w-5 h-5 text-gold shrink-0" />
+              <a href="https://www.facebook.com/LegalChicksPoultryFarm" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
+                Legal Chicks Poultry Farm
+              </a>
             </li>
           </ul>
         </div>

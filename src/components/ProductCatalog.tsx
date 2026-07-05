@@ -14,7 +14,7 @@ const products = [
   {
     name: "Day-Old Chicks (DOC)",
     category: "Livestock",
-    price: "₱100",
+    price: "₱85",
     unit: "per head",
     description: "Purebred Rhode Island Red chicks, guaranteed healthy and active upon release.",
     features: ["Marek's vaccinated", "Dark Mahogany genetics", "High survivability rate"],
@@ -32,7 +32,7 @@ const products = [
   {
     name: "Grower / Breeder Roosters",
     category: "Livestock",
-    price: "₱749",
+    price: "₱599",
     unit: "per head",
     description: "Vigorous Rhode Island Red roosters for breeding and flock expansion.",
     features: ["Aggressive breeders", "Superior genetics", "Optimal feed conversion"],

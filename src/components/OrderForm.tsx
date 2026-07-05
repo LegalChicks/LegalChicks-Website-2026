@@ -4,10 +4,12 @@ import { MessageCircle, CheckCircle2 } from 'lucide-react';
 
 export function OrderForm() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
   
   const [formData, setFormData] = useState({
     customerName: '',
     address: '',
+    contactNumber: '',
     productType: 'Premium Brown Eggs (Tray)',
     quantity: 1,
   });
@@ -16,8 +18,8 @@ export function OrderForm() {
     switch (product) {
       case 'Premium Brown Eggs (Tray)': return 360;
       case 'Premium Egg Subscription (Weekly)': return 360;
-      case 'Pure RIR Chicks': return 100;
-      case 'RIR Grower / Breeder': return 749;
+      case 'Pure RIR Chicks': return 85;
+      case 'RIR Grower / Breeder': return 599;
       default: return 0;
     }
   };
@@ -29,13 +31,26 @@ export function OrderForm() {
     setFormData(prev => ({ ...prev, [id]: value }));
   };
 
-  const isValid = formData.customerName.trim() !== '' && formData.address.trim() !== '' && formData.quantity > 0;
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { id } = e.target;
+    setTouched(prev => ({ ...prev, [id]: true }));
+  };
+
+  const getInputClass = (id: keyof typeof formData, defaultBg: string = 'bg-gray-50', defaultBorder: string = 'border-gray-200') => {
+    const isError = touched[id] && (typeof formData[id] === 'string' ? (formData[id] as string).trim() === '' : formData[id] <= 0);
+    if (isError) {
+      return `w-full px-4 py-3 ${defaultBg} rounded-xl border border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 outline-none transition`;
+    }
+    return `w-full px-4 py-3 ${defaultBg} rounded-xl border ${defaultBorder} focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition`;
+  };
+
+  const isValid = formData.customerName.trim() !== '' && formData.address.trim() !== '' && formData.contactNumber.trim() !== '' && formData.quantity > 0;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if (!isValid) {
-      alert("Please complete your name and address correctly.");
+      alert("Please complete your name, contact number, and address correctly.");
       return;
     }
 
@@ -47,8 +62,8 @@ export function OrderForm() {
       const msg = `Hello Legal Chicks! 🐓
 
 I want to secure a premium order:
-
 👤 *Name:* ${formData.customerName}
+📞 *Contact:* ${formData.contactNumber}
 📍 *Area:* ${formData.address}
 📦 *Item:* ${formData.productType} (x${formData.quantity})
 💰 *Estimated Total:* ₱${totalPrice}
@@ -57,7 +72,7 @@ Is this available for the next harvest?`;
 
       // Copying to clipboard as FB Messenger does not reliably support pre-filled text
       navigator.clipboard.writeText(msg).catch(() => {});
-      window.open(`https://m.me/LegalChicks`, '_blank');
+      window.open(`https://m.me/LegalChicksPoultryFarm`, '_blank');
       
       setTimeout(() => setStatus('idle'), 4000);
     }, 1500);
@@ -76,7 +91,7 @@ Is this available for the next harvest?`;
           <div className="p-8 md:p-12">
             <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-mahogany-900 mb-3">Skip the Grocery Aisle</h2>
-              <p className="text-gray-500 font-light">Order direct from the farm. We will route your request instantly via WhatsApp.</p>
+              <p className="text-gray-500 font-light">Order direct from the farm. We will route your request instantly via Messenger.</p>
             </div>
 
             {status === 'success' ? (
@@ -105,10 +120,30 @@ Is this available for the next harvest?`;
                       required 
                       value={formData.customerName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition"
+                      onBlur={handleBlur}
+                      className={getInputClass('customerName')}
                     />
+                    {touched.customerName && !formData.customerName.trim() && (
+                      <p className="text-red-500 text-xs mt-2 font-medium">Full name is required</p>
+                    )}
                   </div>
                   <div>
+                    <label htmlFor="contactNumber" className="block text-sm font-bold text-gray-900 mb-2">Mobile Number</label>
+                    <input 
+                      type="tel" 
+                      id="contactNumber" 
+                      required 
+                      placeholder="09..." 
+                      value={formData.contactNumber}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={getInputClass('contactNumber')}
+                    />
+                    {touched.contactNumber && !formData.contactNumber.trim() && (
+                      <p className="text-red-500 text-xs mt-2 font-medium">Mobile number is required</p>
+                    )}
+                  </div>
+                  <div className="md:col-span-2">
                     <label htmlFor="address" className="block text-sm font-bold text-gray-900 mb-2">Delivery Area / Landmark</label>
                     <input 
                       type="text" 
@@ -117,8 +152,12 @@ Is this available for the next harvest?`;
                       placeholder="Centro Northeast, Solana..." 
                       value={formData.address}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition"
+                      onBlur={handleBlur}
+                      className={getInputClass('address')}
                     />
+                    {touched.address && !formData.address.trim() && (
+                      <p className="text-red-500 text-xs mt-2 font-medium">Delivery area is required</p>
+                    )}
                   </div>
                 </div>
                 
@@ -129,12 +168,13 @@ Is this available for the next harvest?`;
                       id="productType" 
                       value={formData.productType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white rounded-xl border border-mahogany-200 focus:border-gold outline-none transition font-medium"
+                      onBlur={handleBlur}
+                      className={getInputClass('productType', 'bg-white', 'border-mahogany-200')}
                     >
                       <option value="Premium Brown Eggs (Tray)">Premium Brown Eggs - ₱360/tray</option>
                       <option value="Premium Egg Subscription (Weekly)">Weekly Egg Subscription (Priority) - ₱360/week</option>
-                      <option value="Pure RIR Chicks">Pure RIR Chicks - ₱100/head</option>
-                      <option value="RIR Grower / Breeder">Pure RIR Roosters / Breeders - ₱749/head</option>
+                      <option value="Pure RIR Chicks">Pure RIR Chicks - ₱85/head</option>
+                      <option value="RIR Grower / Breeder">Pure RIR Roosters / Breeders - ₱599/head</option>
                     </select>
                   </div>
                   <div>
@@ -146,8 +186,12 @@ Is this available for the next harvest?`;
                       required 
                       value={formData.quantity}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white rounded-xl border border-mahogany-200 focus:border-gold outline-none transition font-medium" 
+                      onBlur={handleBlur}
+                      className={getInputClass('quantity', 'bg-white', 'border-mahogany-200')} 
                     />
+                    {touched.quantity && formData.quantity <= 0 && (
+                      <p className="text-red-500 text-xs mt-2 font-medium">Valid quantity required</p>
+                    )}
                   </div>
                 </div>
 
