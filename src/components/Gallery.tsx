@@ -1,12 +1,20 @@
 import { motion } from 'motion/react';
 
 const images = [
-  "https://images.unsplash.com/photo-1548550023-2bf3c49b6574?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1522277028135-26330058b292?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1587593259461-8eb34a9fc4d7?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1616428788914-7220cf7b94b0?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1560032549-fb93e62f556b?auto=format&fit=crop&q=80&w=800"
+  "/gallery-1.jpg",
+  "/gallery-2.jpg",
+  "/gallery-3.jpg",
+  "/gallery-4.png",
+  "/gallery-5.jpg",
+  "/gallery-6.jpg",
+  "/gallery-7.jpg",
+  "/gallery-8.jpg",
+  "/gallery-9.jpg",
+  "/gallery-10.jpg",
+  "/gallery-11.jpg",
+  "/gallery-12.jpg",
+  "/gallery-13.jpg",
+  "/gallery-14.jpg",
 ];
 
 const containerVariants = {

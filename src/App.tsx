@@ -6,6 +6,7 @@
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Comparison } from './components/Comparison';
+import { BreedComparisonSlider } from './components/BreedComparisonSlider';
 import { Trust } from './components/Trust';
 import { Services } from './components/Services';
 import { ProductCatalog } from './components/ProductCatalog';
@@ -40,6 +41,7 @@ export default function App() {
       <main className="flex-1 flex flex-col items-center relative w-full">
         <Hero />
         <Comparison />
+        <BreedComparisonSlider />
         <Trust />
         <ProductCatalog />
         <Resources />

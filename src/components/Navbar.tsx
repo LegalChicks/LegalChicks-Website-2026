@@ -1,4 +1,4 @@
-import { Egg, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
 import { useState } from 'react';
 
@@ -26,8 +26,16 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex-shrink-0 flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo(0,0)}>
-                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md border border-gold/30">
-                    <Egg className="h-6 w-6 text-mahogany-700" />
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md border border-gold/30 overflow-hidden">
+                    <motion.img 
+                      initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+                      animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                      transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+                      src="/logo.png"
+                      alt="Legal Chicks Logo"
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
                 </div>
                 <span className={`font-serif font-bold text-2xl tracking-tight transition-colors duration-300 ${isScrolled ? 'text-mahogany-900' : 'text-white'}`}>LEGAL CHICKS</span>
             </div>

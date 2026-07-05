@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { MessageCircle, CheckCircle2 } from 'lucide-react';
 
@@ -29,11 +29,13 @@ export function OrderForm() {
     setFormData(prev => ({ ...prev, [id]: value }));
   };
 
+  const isValid = formData.customerName.trim() !== '' && formData.address.trim() !== '' && formData.quantity > 0;
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    if (!formData.customerName || !formData.address) {
-      alert("Please complete your name and address.");
+    if (!isValid) {
+      alert("Please complete your name and address correctly.");
       return;
     }
 
@@ -53,7 +55,9 @@ I want to secure a premium order:
 
 Is this available for the next harvest?`;
 
-      window.open(`https://wa.me/639369671213?text=${encodeURIComponent(msg)}`, '_blank');
+      // Copying to clipboard as FB Messenger does not reliably support pre-filled text
+      navigator.clipboard.writeText(msg).catch(() => {});
+      window.open(`https://m.me/LegalChicks`, '_blank');
       
       setTimeout(() => setStatus('idle'), 4000);
     }, 1500);
@@ -87,7 +91,7 @@ Is this available for the next harvest?`;
                 </div>
                 <h3 className="text-3xl font-serif text-mahogany-900 mb-4">Request Sent!</h3>
                 <p className="text-gray-600 text-lg max-w-md mx-auto">
-                  Redirecting to WhatsApp to complete your order...
+                  Redirecting to Messenger to complete your order...
                 </p>
               </motion.div>
             ) : (
@@ -154,8 +158,8 @@ Is this available for the next harvest?`;
                   </div>
                   <button 
                     type="submit" 
-                    disabled={status !== 'idle'}
-                    className="w-full sm:w-auto bg-gold hover:bg-goldlight text-mahogany-900 font-bold px-8 py-4 rounded-xl flex items-center justify-center gap-2 transition transform hover:scale-105 shadow-lg shadow-gold/20 disabled:opacity-80 disabled:cursor-not-allowed disabled:transform-none"
+                    disabled={status !== 'idle' || !isValid}
+                    className="w-full sm:w-auto bg-gold hover:bg-goldlight text-mahogany-900 font-bold px-8 py-4 rounded-xl flex items-center justify-center gap-2 transition transform hover:scale-105 shadow-lg shadow-gold/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                   >
                     {status === 'submitting' ? (
                       <div className="w-5 h-5 border-2 border-mahogany-900/30 border-t-mahogany-900 rounded-full animate-spin"></div>
