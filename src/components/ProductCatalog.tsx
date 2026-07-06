@@ -3,40 +3,36 @@ import { Check, ShieldCheck, Activity, Award } from 'lucide-react';
 
 const products = [
   {
-    name: "Premium Brown Eggs",
+    name: "Organic Eggs",
     category: "Fresh Produce",
-    price: "₱360",
+    price: "₱380",
     unit: "per tray",
     description: "Farm-fresh, chemical-free eggs with deep orange yolks and thick shells.",
-    features: ["High Omega-3", "Zero synthetic antibiotics", "Harvested daily"],
-    certifications: ["GAHP Certified Farm"]
+    features: ["High Omega-3", "Zero synthetic antibiotics", "Harvested daily"]
   },
   {
     name: "Day-Old Chicks (DOC)",
     category: "Livestock",
-    price: "₱85",
+    price: "₱150",
     unit: "per head",
     description: "Purebred Rhode Island Red chicks, guaranteed healthy and active upon release.",
-    features: ["Marek's vaccinated", "Dark Mahogany genetics", "High survivability rate"],
-    certifications: ["NMD & IB Vaccinated"]
+    features: ["Marek's vaccinated", "Dark Mahogany genetics", "High survivability rate"]
   },
   {
-    name: "Ready-to-Lay Pullets",
+    name: "Fertile Eggs",
     category: "Livestock",
-    price: "₱650",
-    unit: "per head",
-    description: "4-5 month old pullets ready to start producing premium eggs for your flock.",
-    features: ["Complete vaccination program", "Free-range conditioned", "Excellent body weight"],
-    certifications: ["Full health record provided"]
+    price: "₱50",
+    unit: "per piece",
+    description: "High fertility Rhode Island Red eggs perfect for incubation.",
+    features: ["Carefully selected", "High hatchability", "Optimal genetics"]
   },
   {
     name: "Grower / Breeder Roosters",
     category: "Livestock",
-    price: "₱599",
+    price: "₱459 - ₱899",
     unit: "per head",
     description: "Vigorous Rhode Island Red roosters for breeding and flock expansion.",
-    features: ["Aggressive breeders", "Superior genetics", "Optimal feed conversion"],
-    certifications: ["DTI & RSBSA Registered"]
+    features: ["Aggressive breeders", "Superior genetics", "Optimal feed conversion"]
   }
 ];
 
@@ -94,18 +90,6 @@ export function ProductCatalog() {
                     <li key={fIdx} className="flex items-start gap-2 text-sm text-gray-600">
                       <Check className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
                       <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <h4 className="text-sm font-bold text-gray-900 mb-3 flex items-center gap-2">
-                  <Award className="w-4 h-4 text-gold" /> Certifications
-                </h4>
-                <ul className="space-y-2">
-                  {product.certifications.map((cert, cIdx) => (
-                    <li key={cIdx} className="flex items-start gap-2 text-sm text-gray-600">
-                      <ShieldCheck className="w-4 h-4 text-mahogany-700 shrink-0 mt-0.5" />
-                      <span>{cert}</span>
                     </li>
                   ))}
                 </ul>

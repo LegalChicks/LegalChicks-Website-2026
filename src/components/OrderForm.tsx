@@ -10,16 +10,17 @@ export function OrderForm() {
     customerName: '',
     address: '',
     contactNumber: '',
-    productType: 'Premium Brown Eggs (Tray)',
+    productType: 'Organic Eggs (Tray)',
     quantity: 1,
   });
 
   const getPrice = (product: string) => {
     switch (product) {
-      case 'Premium Brown Eggs (Tray)': return 360;
-      case 'Premium Egg Subscription (Weekly)': return 360;
-      case 'Pure RIR Chicks': return 85;
-      case 'RIR Grower / Breeder': return 599;
+      case 'Organic Eggs (Tray)': return 380;
+      case 'Organic Egg Subscription (Weekly)': return 380;
+      case 'Day-Old Chicks (DOC)': return 150;
+      case 'Fertile Eggs': return 50;
+      case 'Grower / Breeder Roosters': return 459;
       default: return 0;
     }
   };
@@ -171,10 +172,11 @@ Is this available for the next harvest?`;
                       onBlur={handleBlur}
                       className={getInputClass('productType', 'bg-white', 'border-mahogany-200')}
                     >
-                      <option value="Premium Brown Eggs (Tray)">Premium Brown Eggs - ₱360/tray</option>
-                      <option value="Premium Egg Subscription (Weekly)">Weekly Egg Subscription (Priority) - ₱360/week</option>
-                      <option value="Pure RIR Chicks">Pure RIR Chicks - ₱85/head</option>
-                      <option value="RIR Grower / Breeder">Pure RIR Roosters / Breeders - ₱599/head</option>
+                      <option value="Organic Eggs (Tray)">Organic Eggs - ₱380/tray</option>
+                      <option value="Organic Egg Subscription (Weekly)">Weekly Egg Subscription (Priority) - ₱380/week</option>
+                      <option value="Day-Old Chicks (DOC)">Day-Old Chicks (DOC) - ₱150/head</option>
+                      <option value="Fertile Eggs">Fertile Eggs - ₱50/piece</option>
+                      <option value="Grower / Breeder Roosters">Grower / Breeder Roosters - ₱459 - ₱899/head</option>
                     </select>
                   </div>
                   <div>
