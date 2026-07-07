@@ -47,7 +47,7 @@ export function OrderForm() {
 
   const isValid = formData.customerName.trim() !== '' && formData.address.trim() !== '' && formData.contactNumber.trim() !== '' && formData.quantity > 0;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if (!isValid) {
@@ -57,26 +57,33 @@ export function OrderForm() {
 
     setStatus('submitting');
     
-    setTimeout(() => {
+    const orderData = {
+      fullName: formData.customerName,
+      mobileNumber: formData.contactNumber, 
+      address: formData.address,
+      product: formData.productType,
+      quantity: formData.quantity,
+      totalPrice: totalPrice
+    };
+
+    try {
+      await fetch("https://hook.eu2.make.com/tebh63e8ngyl3s1dpgl9ul6cr2dkqqhx", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
+
       setStatus('success');
-      
-      const msg = `Hello Legal Chicks! 🐓
-
-I want to secure a premium order:
-👤 *Name:* ${formData.customerName}
-📞 *Contact:* ${formData.contactNumber}
-📍 *Area:* ${formData.address}
-📦 *Item:* ${formData.productType} (x${formData.quantity})
-💰 *Estimated Total:* ₱${totalPrice}
-
-Is this available for the next harvest?`;
-
-      // Copying to clipboard as FB Messenger does not reliably support pre-filled text
-      navigator.clipboard.writeText(msg).catch(() => {});
-      window.open(`https://m.me/LegalChicksPoultryFarm`, '_blank');
+      alert("Order secured! You will receive a text message from us shortly.");
       
       setTimeout(() => setStatus('idle'), 4000);
-    }, 1500);
+    } catch (error) {
+      console.error("Webhook failed:", error);
+      alert("Network error. Please try clicking Send Request again.");
+      setStatus('idle');
+    }
   };
 
   return (

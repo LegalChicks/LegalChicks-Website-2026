@@ -17,7 +17,7 @@ const testimonials = [
   {
     name: "Carlos Mendoza",
     role: "Backyard Farmer",
-    content: "I bought their ready-to-lay pullets 6 months ago. Incredible genetics! Almost 100% laying rate and the birds are extremely resilient and healthy.",
+    content: "I bought their day-old chicks 6 months ago. Incredible genetics! Almost 100% laying rate and the birds are extremely resilient and healthy.",
     rating: 5,
   }
 ];

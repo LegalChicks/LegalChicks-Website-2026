@@ -1,4 +1,3 @@
-import { Menu } from 'lucide-react';
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
 import { useState } from 'react';
 
@@ -41,9 +40,9 @@ export function Navbar() {
             </div>
             
             <div className="hidden lg:flex items-center space-x-10 text-[15px] font-medium">
-              <a href="#" className={`transition-colors ${isScrolled ? 'text-gray-800 hover:text-mahogany-700' : 'text-white/90 hover:text-white'}`}>Our Story</a>
-              <a href="#" className={`transition-colors ${isScrolled ? 'text-gray-800 hover:text-mahogany-700' : 'text-white/90 hover:text-white'}`}>Why Trust Us</a>
-              <a href="#products" className={`transition-colors ${isScrolled ? 'text-gray-800 hover:text-mahogany-700' : 'text-white/90 hover:text-white'}`}>Products</a>
+              <a href="#story" className={`transition-colors ${isScrolled ? 'text-gray-800 hover:text-mahogany-700' : 'text-white/90 hover:text-white'}`}>Our Story</a>
+              <a href="#trust" className={`transition-colors ${isScrolled ? 'text-gray-800 hover:text-mahogany-700' : 'text-white/90 hover:text-white'}`}>Why Trust Us</a>
+              <a href="#catalog" className={`transition-colors ${isScrolled ? 'text-gray-800 hover:text-mahogany-700' : 'text-white/90 hover:text-white'}`}>Products</a>
               <a href="#gallery" className={`transition-colors ${isScrolled ? 'text-gray-800 hover:text-mahogany-700' : 'text-white/90 hover:text-white'}`}>Gallery</a>
               <a href="#faqs" className={`transition-colors ${isScrolled ? 'text-gray-800 hover:text-mahogany-700' : 'text-white/90 hover:text-white'}`}>FAQs</a>
             </div>
@@ -55,12 +54,9 @@ export function Navbar() {
             </div>
 
             <div className="lg:hidden flex items-center gap-4">
-              <button className="md:hidden bg-gold hover:bg-goldlight text-mahogany-900 px-4 py-2 rounded-full font-semibold text-sm transition-all shadow-[0_0_10px_rgba(212,175,55,0.4)]">
+              <a href="#order" className="md:hidden bg-gold hover:bg-goldlight text-mahogany-900 px-4 py-2 rounded-full font-semibold text-sm transition-all shadow-[0_0_10px_rgba(212,175,55,0.4)]">
                 Order
-              </button>
-              <button className={`p-1 ${isScrolled ? 'text-mahogany-900' : 'text-white'}`}>
-                <Menu className="w-7 h-7" />
-              </button>
+              </a>
             </div>
           </div>
         </div>

@@ -14,8 +14,8 @@ const trustFeatures = [
   },
   {
     icon: FileBadge,
-    title: 'Officially Certified',
-    description: 'DTI & RSBSA registered, strictly adhering to the highest Good Animal Husbandry Practices (GAHP).',
+    title: 'Premium Genetics',
+    description: 'We raise purebred Rhode Island Reds known for high egg production and meat quality.',
   }
 ];
 

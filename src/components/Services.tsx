@@ -14,8 +14,8 @@ const services = [
   },
   {
     icon: Sprout,
-    title: 'Ready-to-Lay Pullets',
-    description: 'Healthy, vaccinated pullets ready to start producing eggs for your farm or backyard flock.',
+    title: 'Fertile Hatching Eggs',
+    description: 'Carefully selected, high-fertility Rhode Island Red eggs perfect for incubation and hatching.',
   },
   {
     icon: BookOpen,

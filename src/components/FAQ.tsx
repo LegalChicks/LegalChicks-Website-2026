@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     question: "Do you offer wholesale pricing?",
-    answer: "Yes, we offer discounted rates for bulk orders of day-old chicks, ready-to-lay pullets, and fresh eggs. Get in touch with us to discuss your requirements and receive a custom quote."
+    answer: "Yes, we offer discounted rates for bulk orders of day-old chicks, fertile eggs, and fresh eggs. Get in touch with us to discuss your requirements and receive a custom quote."
   }
 ];
 

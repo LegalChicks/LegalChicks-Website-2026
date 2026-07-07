@@ -29,10 +29,10 @@ export default function App() {
         style={{ scaleX: scrollYProgress }}
       />
       <title>Legal Chicks - Cagayan Valley's Premier RIR Hub</title>
-      <meta name="description" content="Premium, chemical-free Rhode Island Reds in Solana. High-quality day-old chicks, ready-to-lay pullets, and farm-fresh free-range eggs." />
-      <meta name="keywords" content="Rhode Island Reds, RIR, Cagayan Valley, Solana, fresh eggs, day-old chicks, pullets, natural farming" />
+      <meta name="description" content="Premium, chemical-free Rhode Island Reds in Solana. High-quality day-old chicks, fertile eggs, and farm-fresh free-range eggs." />
+      <meta name="keywords" content="Rhode Island Reds, RIR, Cagayan Valley, Solana, fresh eggs, day-old chicks, fertile eggs, natural farming" />
       <meta property="og:title" content="Legal Chicks - Premier RIR Hub" />
-      <meta property="og:description" content="Premium, chemical-free Rhode Island Reds in Solana. High-quality chicks, pullets, and farm-fresh eggs." />
+      <meta property="og:description" content="Premium, chemical-free Rhode Island Reds in Solana. High-quality chicks, fertile eggs, and farm-fresh eggs." />
       <meta property="og:type" content="website" />
       <meta property="og:image" content="https://images.unsplash.com/photo-1548550023-2bf3c49b6574?auto=format&fit=crop&q=80&w=1200" />
       

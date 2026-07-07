@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 
 export function Comparison() {
   return (
-    <section className="py-20 bg-white relative w-full">
+    <section id="story" className="py-20 bg-white relative w-full">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -12,7 +12,7 @@ export function Comparison() {
           className="text-center mb-12"
         >
           <span className="text-gold font-bold tracking-widest uppercase text-xs mb-2 block">The Science of Nutrition</span>
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-mahogany-900 mb-4">Why LCPF Eggs Command ₱12</h2>
+          <h2 className="text-3xl md:text-5xl font-serif font-bold text-mahogany-900 mb-4">Why LCPF Eggs Command Premium Pricing</h2>
           <p className="text-gray-600 text-lg font-light max-w-2xl mx-auto">A direct comparison of what you feed your family when you choose Cagayan Valley's finest.</p>
         </motion.div>
 

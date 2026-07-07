@@ -43,7 +43,7 @@ export function Hero() {
           
           <div className="flex flex-col sm:flex-row gap-4">
               <a href="#order" className="bg-gold hover:bg-white text-mahogany-900 text-center px-8 py-4 rounded-full font-bold text-lg transition-all shadow-[0_0_25px_rgba(212,175,55,0.6)] transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                  <ShoppingBag className="w-5 h-5" /> Secure Order (₱360/Tray)
+                  <ShoppingBag className="w-5 h-5" /> Secure Order (₱380/Tray)
               </a>
           </div>
         </motion.div>
