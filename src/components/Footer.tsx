@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Twitter, MapPin, Mail, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Footer() {
   return (
@@ -78,8 +79,9 @@ export function Footer() {
       <div className="max-w-7xl mx-auto pt-8 border-t border-gray-900 flex flex-col items-center gap-2 text-sm font-light text-center">
         <p>&copy; {new Date().getFullYear()} Legal Chicks Poultry Farm (LCPF). Engineered with Precision in Solana, Cagayan Valley.</p>
         <div className="flex gap-4 mt-4">
-          <a href="#" className="hover:text-white transition-colors text-xs">Privacy Policy</a>
-          <a href="#" className="hover:text-white transition-colors text-xs">Terms of Service</a>
+          <Link to="#" className="hover:text-white transition-colors text-xs">Privacy Policy</Link>
+          <Link to="#" className="hover:text-white transition-colors text-xs">Terms of Service</Link>
+          <Link to="/policy" className="hover:text-white transition-colors text-xs">No Return Policy</Link>
         </div>
       </div>
     </footer>

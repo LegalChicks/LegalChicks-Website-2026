@@ -17,9 +17,11 @@ import { FAQ } from './components/FAQ';
 import { OrderForm } from './components/OrderForm';
 import { Footer } from './components/Footer';
 import { ChatFab } from './components/ChatFab';
+import { NoReturnPolicy } from './components/NoReturnPolicy';
 import { motion, useScroll } from 'motion/react';
+import { Routes, Route } from 'react-router-dom';
 
-export default function App() {
+function Home() {
   const { scrollYProgress } = useScroll();
 
   return (
@@ -28,13 +30,6 @@ export default function App() {
         className="fixed top-0 left-0 right-0 h-[3px] bg-gold origin-left z-[100]"
         style={{ scaleX: scrollYProgress }}
       />
-      <title>Legal Chicks - Cagayan Valley's Premier RIR Hub</title>
-      <meta name="description" content="Premium, chemical-free Rhode Island Reds in Solana. High-quality day-old chicks, fertile eggs, and farm-fresh free-range eggs." />
-      <meta name="keywords" content="Rhode Island Reds, RIR, Cagayan Valley, Solana, fresh eggs, day-old chicks, fertile eggs, natural farming" />
-      <meta property="og:title" content="Legal Chicks - Premier RIR Hub" />
-      <meta property="og:description" content="Premium, chemical-free Rhode Island Reds in Solana. High-quality chicks, fertile eggs, and farm-fresh eggs." />
-      <meta property="og:type" content="website" />
-      <meta property="og:image" content="https://images.unsplash.com/photo-1548550023-2bf3c49b6574?auto=format&fit=crop&q=80&w=1200" />
       
       <Navbar />
       
@@ -55,6 +50,25 @@ export default function App() {
       <Footer />
       <ChatFab />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <>
+      <title>Legal Chicks - Cagayan Valley's Premier RIR Hub</title>
+      <meta name="description" content="Premium, chemical-free Rhode Island Reds in Solana. High-quality day-old chicks, fertile eggs, and farm-fresh free-range eggs." />
+      <meta name="keywords" content="Rhode Island Reds, RIR, Cagayan Valley, Solana, fresh eggs, day-old chicks, fertile eggs, natural farming" />
+      <meta property="og:title" content="Legal Chicks - Premier RIR Hub" />
+      <meta property="og:description" content="Premium, chemical-free Rhode Island Reds in Solana. High-quality chicks, fertile eggs, and farm-fresh eggs." />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content="https://images.unsplash.com/photo-1548550023-2bf3c49b6574?auto=format&fit=crop&q=80&w=1200" />
+      
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/policy" element={<NoReturnPolicy />} />
+      </Routes>
+    </>
   );
 }
 
