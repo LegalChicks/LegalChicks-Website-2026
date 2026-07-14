@@ -12,7 +12,6 @@ import { Services } from './components/Services';
 import { ProductCatalog } from './components/ProductCatalog';
 import { Resources } from './components/Resources';
 import { Gallery } from './components/Gallery';
-import { Testimonials } from './components/Testimonials';
 import { FAQ } from './components/FAQ';
 import { OrderForm } from './components/OrderForm';
 import { Footer } from './components/Footer';
@@ -42,7 +41,6 @@ function Home() {
         <Resources />
         <Services />
         <Gallery />
-        <Testimonials />
         <FAQ />
         <OrderForm />
       </main>
