@@ -90,7 +90,15 @@ export function OrderForm() {
     .then((response) => {
       console.log('SUCCESS!', response.status, response.text);
       setStatus('success'); 
-      // You can also add code here to clear the form or show a success popup
+      setFormData({
+        customerName: '',
+        address: '',
+        contactNumber: '',
+        productType: 'Organic Eggs (Tray)',
+        quantity: 1,
+      });
+      setTouched({});
+      setTimeout(() => setStatus('idle'), 4000);
     })
     .catch((err) => {
       console.log('FAILED...', err);
@@ -128,7 +136,7 @@ export function OrderForm() {
                 </div>
                 <h3 className="text-3xl font-serif text-mahogany-900 mb-4">Request Sent!</h3>
                 <p className="text-gray-600 text-lg max-w-md mx-auto">
-                  Redirecting to Messenger to complete your order...
+                  We have received your order. We will contact you shortly to confirm!
                 </p>
               </motion.div>
             ) : (
