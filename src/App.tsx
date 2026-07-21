@@ -8,15 +8,13 @@ import { Hero } from './components/Hero';
 import { Comparison } from './components/Comparison';
 import { BreedComparisonSlider } from './components/BreedComparisonSlider';
 import { Trust } from './components/Trust';
-import { Services } from './components/Services';
 import { ProductCatalog } from './components/ProductCatalog';
-import { Resources } from './components/Resources';
 import { Gallery } from './components/Gallery';
-import { FAQ } from './components/FAQ';
 import { OrderForm } from './components/OrderForm';
 import { Footer } from './components/Footer';
 import { ChatFab } from './components/ChatFab';
 import { NoReturnPolicy } from './components/NoReturnPolicy';
+import { ResourcesPage } from './components/ResourcesPage';
 import { motion, useScroll } from 'motion/react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -38,10 +36,7 @@ function Home() {
         <BreedComparisonSlider />
         <Trust />
         <ProductCatalog />
-        <Resources />
-        <Services />
         <Gallery />
-        <FAQ />
         <OrderForm />
       </main>
 
@@ -65,6 +60,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/policy" element={<NoReturnPolicy />} />
+        <Route path="/resources" element={<ResourcesPage />} />
       </Routes>
     </>
   );

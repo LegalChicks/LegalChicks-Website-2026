@@ -23,6 +23,7 @@ const products = [
     category: "Livestock",
     price: "₱50",
     unit: "per piece",
+    note: "Ask about our 100+ bulk discount rate!",
     description: "High fertility Rhode Island Red eggs perfect for incubation.",
     features: ["Carefully selected", "High hatchability", "Optimal genetics"]
   },
@@ -33,6 +34,14 @@ const products = [
     unit: "per head",
     description: "Vigorous Rhode Island Red roosters for breeding and flock expansion.",
     features: ["Aggressive breeders", "Superior genetics", "Optimal feed conversion"]
+  },
+  {
+    name: "Black Australorps",
+    category: "Livestock",
+    price: "₱160",
+    unit: "per head (DOC)",
+    description: "Premium dual-purpose heritage breed known for exceptional egg production and meat quality.",
+    features: ["Dual-purpose variety", "Prolific layers", "Excellent foragers"]
   }
 ];
 
@@ -56,7 +65,7 @@ export function ProductCatalog() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, idx) => (
             <motion.div
               key={idx}
@@ -75,10 +84,13 @@ export function ProductCatalog() {
               </div>
 
               <div className="mb-6 relative z-10">
-                <div className="flex items-baseline gap-1">
+                <div className="flex items-baseline gap-1 flex-wrap">
                   <span className="text-3xl font-black text-gold">{product.price}</span>
                   <span className="text-gray-500 text-sm font-medium">/{product.unit}</span>
                 </div>
+                {product.note && (
+                  <p className="text-xs text-mahogany-600 mt-1 font-medium">{product.note}</p>
+                )}
               </div>
 
               <div className="flex-grow relative z-10">

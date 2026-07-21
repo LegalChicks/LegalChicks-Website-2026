@@ -45,7 +45,6 @@ export function Navbar() {
               <a href="/#trust" className={`transition-colors ${isScrolled ? 'text-gray-800 hover:text-mahogany-700' : 'text-white/90 hover:text-white'}`}>Why Trust Us</a>
               <a href="/#catalog" className={`transition-colors ${isScrolled ? 'text-gray-800 hover:text-mahogany-700' : 'text-white/90 hover:text-white'}`}>Products</a>
               <a href="/#gallery" className={`transition-colors ${isScrolled ? 'text-gray-800 hover:text-mahogany-700' : 'text-white/90 hover:text-white'}`}>Gallery</a>
-              <a href="/#faqs" className={`transition-colors ${isScrolled ? 'text-gray-800 hover:text-mahogany-700' : 'text-white/90 hover:text-white'}`}>FAQs</a>
             </div>
 
             <div className="hidden md:flex">

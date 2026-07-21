@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { MessageCircle, CheckCircle2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export function OrderForm() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
@@ -38,14 +39,27 @@ export function OrderForm() {
   };
 
   const getInputClass = (id: keyof typeof formData, defaultBg: string = 'bg-gray-50', defaultBorder: string = 'border-gray-200') => {
-    const isError = touched[id] && (typeof formData[id] === 'string' ? (formData[id] as string).trim() === '' : formData[id] <= 0);
+    let isError = false;
+    if (touched[id]) {
+      if (id === 'contactNumber') {
+        isError = !/^09\d{9}$/.test(formData.contactNumber);
+      } else if (typeof formData[id] === 'string') {
+        isError = (formData[id] as string).trim() === '';
+      } else {
+        isError = formData[id] <= 0;
+      }
+    }
+
     if (isError) {
       return `w-full px-4 py-3 ${defaultBg} rounded-xl border border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 outline-none transition`;
     }
     return `w-full px-4 py-3 ${defaultBg} rounded-xl border ${defaultBorder} focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition`;
   };
 
-  const isValid = formData.customerName.trim() !== '' && formData.address.trim() !== '' && formData.contactNumber.trim() !== '' && formData.quantity > 0;
+  const isValid = formData.customerName.trim() !== '' && 
+                  formData.address.trim() !== '' && 
+                  /^09\d{9}$/.test(formData.contactNumber) && 
+                  formData.quantity > 0;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -66,24 +80,23 @@ export function OrderForm() {
       totalPrice: totalPrice
     };
 
-    try {
-      await fetch("https://hook.eu2.make.com/tebh63e8ngyl3s1dpgl9ul6cr2dkqqhx", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(orderData),
-      });
-
-      setStatus('success');
-      alert("Order secured! You will receive a text message from us shortly.");
-      
-      setTimeout(() => setStatus('idle'), 4000);
-    } catch (error) {
-      console.error("Webhook failed:", error);
-      alert("Network error. Please try clicking Send Request again.");
-      setStatus('idle');
-    }
+    // --- ADD THE EMAILJS SCRIPT HERE ---
+    emailjs.send(
+      'service_3rj0t59',     // Get this from EmailJS dashboard
+      'template_f2803tv',    // Get this from EmailJS dashboard
+      orderData,             // This links directly to your template variables
+      'RY1tGe1iEiMGRXdX4'      // Get this from EmailJS Account > API Keys
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+      setStatus('success'); 
+      // You can also add code here to clear the form or show a success popup
+    })
+    .catch((err) => {
+      console.log('FAILED...', err);
+      setStatus('idle'); 
+      alert("Something went wrong sending your order. Please try again.");
+    });
   };
 
   return (
@@ -105,8 +118,9 @@ export function OrderForm() {
             {status === 'success' ? (
               <motion.div
                 key="success"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
                 className="flex flex-col items-center justify-center text-center py-12"
               >
                 <div className="w-20 h-20 bg-gold/20 rounded-full flex items-center justify-center mb-6">
@@ -141,14 +155,16 @@ export function OrderForm() {
                       type="tel" 
                       id="contactNumber" 
                       required 
-                      placeholder="09..." 
+                      pattern="09[0-9]{9}"
+                      maxLength={11}
+                      placeholder="09XXXXXXXXX" 
                       value={formData.contactNumber}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       className={getInputClass('contactNumber')}
                     />
-                    {touched.contactNumber && !formData.contactNumber.trim() && (
-                      <p className="text-red-500 text-xs mt-2 font-medium">Mobile number is required</p>
+                    {touched.contactNumber && !/^09\d{9}$/.test(formData.contactNumber) && (
+                      <p className="text-red-500 text-xs mt-2 font-medium">Valid 11-digit number starting with 09 is required</p>
                     )}
                   </div>
                   <div className="md:col-span-2">

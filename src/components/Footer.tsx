@@ -33,9 +33,9 @@ export function Footer() {
           <ul className="flex flex-col gap-3 text-sm font-light">
             <li><a href="#" className="hover:text-gold transition-colors">Our Story</a></li>
             <li><a href="#" className="hover:text-gold transition-colors">Why Trust Us</a></li>
-            <li><a href="#products" className="hover:text-gold transition-colors">Products & Services</a></li>
+            <li><a href="#catalog" className="hover:text-gold transition-colors">Premium Catalog</a></li>
             <li><a href="#gallery" className="hover:text-gold transition-colors">Gallery</a></li>
-            <li><a href="#faqs" className="hover:text-gold transition-colors">FAQs</a></li>
+            <li><Link to="/resources" className="hover:text-gold transition-colors">Care Guide</Link></li>
           </ul>
         </div>
 
